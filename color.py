@@ -93,7 +93,7 @@ def game_loop():
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                     x_change = 0
-                    print("let it go")
+                    print("Never let it go")
         
         pygame.display.update()
        # clock.tick(60)
