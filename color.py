@@ -1,3 +1,4 @@
+from tkinter import Menubutton
 import pygame
 import time
 import random
@@ -42,6 +43,27 @@ def yWork(y):
         return display_height
     else:
         return y
+    
+def pasteCanvas(arr, dotS):
+    gameDisplay.fill(black)
+    for i in range((int)(display_width/dotS)):
+             #   for z in range[((int)(display_height/dotS))]:
+                for z in range((int)(display_height/dotS)):  
+                   # print("Hello thereafdadsfasdf")
+                    test = arr[i][z]
+                    if test == 'red':
+                        block(i*dotS, z*dotS, dotS, dotS, (255, 0, 0))
+                    elif test == 'orange':
+                        block(i*dotS, z*dotS, dotS, dotS, (255, 120, 0))
+                    elif test == 'yellow':
+                        block(i*dotS, z*dotS, dotS, dotS, (255, 255, 0))
+                    elif test == 'green':
+                        block(i*dotS, z*dotS, dotS, dotS, (0, 255, 0))
+                    elif test == 'blue':
+                        block(i*dotS, z*dotS, dotS, dotS, (0, 0, 255))
+                    elif test == 'purple':
+                        block(i*dotS, z*dotS, dotS, dotS, (255, 0, 130))
+                        
 
 def text_objects(text,font):
     textSurface = font.render(text, True, white)
@@ -54,6 +76,74 @@ def message_display(text):
     gameDisplay.blit(TextSurf, TextRect)
     pygame.display.update()
   #  time.sleep(1)
+
+def menuLoop():
+    menuOn = True
+    while menuOn:
+        for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    crashed = True
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_LEFT:
+                    #  print("hello")
+                      #  message_display("Level UP")
+                     #   time.sleep(3)
+                      #  pasteCanvas(arr, dotS)
+                     #   stall = True
+                        menuOn = False
+                        break
+
+def numCount(arr, dotS):
+#    arr[(int)(x/dotS)].insert(((int)(y/dotS)), "red")
+            
+    re = 0
+    ora = 0
+    yel = 0
+    gre = 0
+    blu = 0
+    pup = 0
+    zero = 0
+    #   print("Hello there")
+    for i in range((int)(display_width/dotS)):
+        #   for z in range[((int)(display_height/dotS))]:
+        for z in range((int)(display_height/dotS)):  
+            # print("Hello thereafdadsfasdf")
+            test = arr[i][z]
+            if test == 'red':
+                re+=1
+            elif test == 'orange':
+                ora+=1
+            elif test == 'yellow':
+                yel+=1
+            elif test == 'green':
+                gre+=1
+            elif test == 'blue':
+                blu+=1
+            elif test == 'purple':
+                pup+=1
+            elif test == 0:
+                zero+=1
+                
+            
+    totalColor = re+ora+yel+gre+blu+pup
+    print("\n\n\n---Without Empty Space------------")
+    print("Red:", re, (str)(round(re/totalColor, 3)*100) + "%")
+    print("Orange:", ora, (str)(round(ora/totalColor, 3)*100) + "%")
+    print("Yellow:", yel, (str)(round(yel/totalColor, 3)*100) + "%")
+    print("Green:", gre, (str)(round(gre/totalColor, 3)*100) + "%")
+    print("Blue:", blu, (str)(round(blu/totalColor, 3)*100) + "%")
+    print("Purple:", pup, (str)(round(pup/totalColor, 3)*100) + "%")
+    
+    
+    totalColor = re+ora+yel+gre+blu+pup+zero
+    print("\n\n\n---With Empty Space------------")
+    print("Red:", re, (str)(round(re/totalColor, 3)*100) + "%")
+    print("Orange:", ora, (str)(round(ora/totalColor, 3)*100) + "%")
+    print("Yellow:", yel, (str)(round(yel/totalColor, 3)*100) + "%")
+    print("Green:", gre, (str)(round(gre/totalColor, 3)*100) + "%")
+    print("Blue:", blu, (str)(round(blu/totalColor, 3)*100) + "%")
+    print("Purple:", pup, (str)(round(pup/totalColor, 3)*100) + "%")
+    print("Empty:", zero, (str)(round(zero/totalColor, 3)*100) + "%")    
 
 def game_loop():
     gameDisplay.fill(black)
@@ -83,9 +173,14 @@ def game_loop():
     x6 = 20
     y6 = 20
     check = 0
+   # stall = False
     while True:
         
-        gameDisplay.fill(black)
+      #  if(stall):
+        #    print("Hello peter")
+        
+        stall = False
+        
        # randcolor = (random.randint(0,255),random.randint(0,255),random.randint(0,255)) 
         
         
@@ -94,36 +189,29 @@ def game_loop():
                 crashed = True
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    print("hello")
+                  #  print("hello")
+                    numCount(arr, dotS)
                     message_display("Level UP")
+                 #   time.sleep(3)
+                    menuLoop()
+                    pasteCanvas(arr, dotS)
+                    stall = True
+                    #while stall:
+              #          if event.type == pygame.KEYUP:
+              #              if event.key == pygame.K_LEFT:
+                               
+              #                  print("Never let it go")
+              #                  stall = False
+                    
                     #time.sleep(3)
                 #elif event.key == pygame.K_RIGHT:
               #      x_change = 5
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                    x_change = 0
-                    print("Never let it go")
+            
         
         
         #Updating stuff
         
-        for i in range((int)(display_width/dotS)):
-             #   for z in range[((int)(display_height/dotS))]:
-                for z in range((int)(display_height/dotS)):  
-                   # print("Hello thereafdadsfasdf")
-                    test = arr[i][z]
-                    if test == 'red':
-                        block(i*dotS, z*dotS, dotS, dotS, (255, 0, 0))
-                    elif test == 'orange':
-                        block(i*dotS, z*dotS, dotS, dotS, (255, 120, 0))
-                    elif test == 'yellow':
-                        block(i*dotS, z*dotS, dotS, dotS, (255, 255, 0))
-                    elif test == 'green':
-                        block(i*dotS, z*dotS, dotS, dotS, (0, 255, 0))
-                    elif test == 'blue':
-                        block(i*dotS, z*dotS, dotS, dotS, (0, 0, 255))
-                    elif test == 'purple':
-                        block(i*dotS, z*dotS, dotS, dotS, (255, 0, 130))
+       # pasteCanvas(arr, dotS)
 
         
         block(x6, y6, dotS, dotS, white)
@@ -135,47 +223,47 @@ def game_loop():
         
         
         pygame.display.update()
-       # clock.tick(60)
+        clock.tick(6000000000)
         
      
         #This part adds the various colors to a 2D List to keep track of them all.
-       # block(x6, y6, dotS, dotS, (255, 0, 0))
+        block(x6, y6, dotS, dotS, (255, 0, 0))
         try:
             arr[(int)(math.fabs(x6/dotS))].pop((int)(math.fabs(y6/dotS)))
             arr[(int)(x6/dotS)].insert(((int)(y6/dotS)), "red")
         except:
             pass
-      #  block(x1, y1, dotS, dotS, (255, 120, 0))
+        block(x1, y1, dotS, dotS, (255, 120, 0))
         try:
             arr[(int)(math.fabs(x1/dotS))].pop((int)(math.fabs(y1/dotS)))
             arr[(int)(x1/dotS)].insert(((int)(y1/dotS)), "orange")
         except:
             pass
-      #  block(x2, y2, dotS, dotS, (255, 255, 0))
+        block(x2, y2, dotS, dotS, (255, 255, 0))
         try:
             arr[(int)(math.fabs(x2/dotS))].pop((int)(math.fabs(y2/dotS)))
             arr[(int)(x2/dotS)].insert(((int)(y2/dotS)), "yellow")
         except:
             pass
-      #  block(x3, y3, dotS, dotS, (0, 255, 0))
+        block(x3, y3, dotS, dotS, (0, 255, 0))
         try:
             arr[(int)(math.fabs(x3/dotS))].pop((int)(math.fabs(y3/dotS)))
             arr[(int)(x3/dotS)].insert(((int)(y3/dotS)), "green")
         except:
             pass
-      #  block(x4, y4, dotS, dotS, (0, 0, 255))
+        block(x4, y4, dotS, dotS, (0, 0, 255))
         try:
             arr[(int)(math.fabs(x4/dotS))].pop((int)(math.fabs(y4/dotS)))
             arr[(int)(x4/dotS)].insert(((int)(y4/dotS)), "blue")
         except:
            pass
-      #  block(x5, y5, dotS, dotS, (255, 0, 130))
+        block(x5, y5, dotS, dotS, (255, 0, 130))
         try:
             arr[(int)(math.fabs(x5/dotS))].pop((int)(math.fabs(y5/dotS)))
             arr[(int)(x5/dotS)].insert(((int)(y5/dotS)), "purple")
         except:
             pass
-        #print(arr[0])
+      #  print(arr[0])
 
         x6+=random.randint(-1,1)*dotS
         x6 = xWork(x6)
@@ -215,60 +303,13 @@ def game_loop():
 
         #Color checker
         check+=1
-        if check % 1000 == 0:
-            pygame.display.update()
-            clock.tick(1)
-        if check % 100000 == 0:
+      #  if check % 50 == 0:
+          #  pygame.display.update()
+        #    clock.tick(1)
+        if check % 1000000 == 0:
         #    arr[(int)(x/dotS)].insert(((int)(y/dotS)), "red")
             
-            re = 0
-            ora = 0
-            yel = 0
-            gre = 0
-            blu = 0
-            pup = 0
-            zero = 0
-         #   print("Hello there")
-            for i in range((int)(display_width/dotS)):
-             #   for z in range[((int)(display_height/dotS))]:
-                for z in range((int)(display_height/dotS)):  
-                   # print("Hello thereafdadsfasdf")
-                    test = arr[i][z]
-                    if test == 'red':
-                        re+=1
-                    elif test == 'orange':
-                        ora+=1
-                    elif test == 'yellow':
-                        yel+=1
-                    elif test == 'green':
-                        gre+=1
-                    elif test == 'blue':
-                        blu+=1
-                    elif test == 'purple':
-                        pup+=1
-                    elif test == 0:
-                        zero+=1
-                        
-                        
-            totalColor = re+ora+yel+gre+blu+pup
-            print("\n\n\n---Without Empty Space------------")
-            print("Red:", re, (str)(round(re/totalColor, 3)*100) + "%")
-            print("Orange:", ora, (str)(round(ora/totalColor, 3)*100) + "%")
-            print("Yellow:", yel, (str)(round(yel/totalColor, 3)*100) + "%")
-            print("Green:", gre, (str)(round(gre/totalColor, 3)*100) + "%")
-            print("Blue:", blu, (str)(round(blu/totalColor, 3)*100) + "%")
-            print("Purple:", pup, (str)(round(pup/totalColor, 3)*100) + "%")
-           
-            
-            totalColor = re+ora+yel+gre+blu+pup+zero
-            print("\n\n\n---With Empty Space------------")
-            print("Red:", re, (str)(round(re/totalColor, 3)*100) + "%")
-            print("Orange:", ora, (str)(round(ora/totalColor, 3)*100) + "%")
-            print("Yellow:", yel, (str)(round(yel/totalColor, 3)*100) + "%")
-            print("Green:", gre, (str)(round(gre/totalColor, 3)*100) + "%")
-            print("Blue:", blu, (str)(round(blu/totalColor, 3)*100) + "%")
-            print("Purple:", pup, (str)(round(pup/totalColor, 3)*100) + "%")
-            print("Empty:", zero, (str)(round(zero/totalColor, 3)*100) + "%")
+            numCount(arr, dotS)
             
            # arr[]
             
