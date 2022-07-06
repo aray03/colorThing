@@ -28,10 +28,13 @@ def main():
    # import pygame
 
     pygame.init()
+    width = 1
+    height = 1
     
+    screen = pygame.display.set_mode((width, height ))
     penguinImage = pygame.image.load("goomba.png").convert()
-    height = penguinImage.get_height
-    width = penguinImage.get_width
+    height = penguinImage.get_height()
+    width = penguinImage.get_width()
     
     
   #  width=350
