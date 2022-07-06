@@ -80,13 +80,8 @@ def message_display(text, names):
         TextSurf, TextRect = text_objects(names[i]+ ": "+str(text[i]) + "(" + str(round((text[i]/colorTotal)*10000)/100) +"%)",largeText)
         TextRect.center = ((display_width/2),(display_height/(len(text)+1)*(i+1)))
         gameDisplay.blit(TextSurf, TextRect)
-
-    
- #   TextSurf, TextRect = text_objects(text,largeText)
-   # TextRect.center = ((display_width/2),(display_height/6*6))
-    #gameDisplay.blit(TextSurf, TextRect)
     pygame.display.update()
-  #  time.sleep(1)
+
 
 def menuLoop():
     menuOn = True
@@ -136,25 +131,25 @@ def numCount(arr, dotS):
                 zero+=1
                 
             
-    totalColor = re+ora+yel+gre+blu+pup
-    print("\n\n\n---Without Empty Space------------")
-    print("Red:", re, (str)(round(re/totalColor, 3)*100) + "%")
-    print("Orange:", ora, (str)(round(ora/totalColor, 3)*100) + "%")
-    print("Yellow:", yel, (str)(round(yel/totalColor, 3)*100) + "%")
-    print("Green:", gre, (str)(round(gre/totalColor, 3)*100) + "%")
-    print("Blue:", blu, (str)(round(blu/totalColor, 3)*100) + "%")
-    print("Purple:", pup, (str)(round(pup/totalColor, 3)*100) + "%")
+  #  totalColor = re+ora+yel+gre+blu+pup
+  #  print("\n\n\n---Without Empty Space------------")
+   # print("Red:", re, (str)(round(re/totalColor, 3)*100) + "%")
+   # print("Orange:", ora, (str)(round(ora/totalColor, 3)*100) + "%")
+   # print("Yellow:", yel, (str)(round(yel/totalColor, 3)*100) + "%")
+  #  print("Green:", gre, (str)(round(gre/totalColor, 3)*100) + "%")
+  #  print("Blue:", blu, (str)(round(blu/totalColor, 3)*100) + "%")
+   # print("Purple:", pup, (str)(round(pup/totalColor, 3)*100) + "%")
     
     
-    totalColor = re+ora+yel+gre+blu+pup+zero
-    print("\n\n\n---With Empty Space------------")
-    print("Red:", re, (str)(round(re/totalColor, 3)*100) + "%")
-    print("Orange:", ora, (str)(round(ora/totalColor, 3)*100) + "%")
-    print("Yellow:", yel, (str)(round(yel/totalColor, 3)*100) + "%")
-    print("Green:", gre, (str)(round(gre/totalColor, 3)*100) + "%")
-    print("Blue:", blu, (str)(round(blu/totalColor, 3)*100) + "%")
-    print("Purple:", pup, (str)(round(pup/totalColor, 3)*100) + "%")
-    print("Empty:", zero, (str)(round(zero/totalColor, 3)*100) + "%")    
+  #  totalColor = re+ora+yel+gre+blu+pup+zero
+   # print("\n\n\n---With Empty Space------------")
+   # print("Red:", re, (str)(round(re/totalColor, 3)*100) + "%")
+   # print("Orange:", ora, (str)(round(ora/totalColor, 3)*100) + "%")
+   # print("Yellow:", yel, (str)(round(yel/totalColor, 3)*100) + "%")
+   # print("Green:", gre, (str)(round(gre/totalColor, 3)*100) + "%")
+  #  print("Blue:", blu, (str)(round(blu/totalColor, 3)*100) + "%")
+   # print("Purple:", pup, (str)(round(pup/totalColor, 3)*100) + "%")
+    #print("Empty:", zero, (str)(round(zero/totalColor, 3)*100) + "%")    
 
    # food = ""
    # food = "Red:"+ str(re) + (str)(round(re/totalColor)) + "%"
@@ -179,21 +174,23 @@ def game_loop():
     arr = [ [0]*cols for i in range(rows)]
    # print(arr)
 
-    x = 10
-    y = 10
-    x1 = display_width - 10
-    y1 = display_height - 10
-    x2 = 10
-    y2 = display_height - 10
-    x3 = display_width - 10
-    y3 = 10
-    x4 = 10
-    y4 = display_height/2
-    x5 = display_width - 10
-    y5 = display_height/2
-    x6 = 20
-    y6 = 20
-    check = 0
+    
+
+    x =  random.randint(0,display_width/dotS)*dotS
+    y =  random.randint(0,display_height/dotS)*dotS
+    x1 = random.randint(0,display_width/dotS)*dotS
+    y1 = random.randint(0,display_height/dotS)*dotS
+    x2 = random.randint(0,display_width/dotS)*dotS
+    y2 = random.randint(0,display_height/dotS)*dotS
+    x3 = random.randint(0,display_width/dotS)*dotS
+    y3 = random.randint(0,display_height/dotS)*dotS
+    x4 = random.randint(0,display_width/dotS)*dotS
+    y4 = random.randint(0,display_height/dotS)*dotS
+    x5 = random.randint(0,display_width/dotS)*dotS
+    y5 = random.randint(0,display_height/dotS)*dotS
+    x6 = random.randint(0,display_width/dotS)*dotS
+    y6 = random.randint(0,display_height/dotS)*dotS
+  #  check = 0
    # stall = False
     while True:
         
@@ -323,14 +320,14 @@ def game_loop():
         y5 = yWork(y5)
 
         #Color checker
-        check+=1
+      #  check+=1
       #  if check % 50 == 0:
           #  pygame.display.update()
         #    clock.tick(1)
-        if check % 1000000 == 0:
+      #  if check % 1000000 == 0:
         #    arr[(int)(x/dotS)].insert(((int)(y/dotS)), "red")
             
-            numCount(arr, dotS)
+        #    numCount(arr, dotS)
             
            # arr[]
             
