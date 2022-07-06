@@ -69,11 +69,22 @@ def text_objects(text,font):
     textSurface = font.render(text, True, white)
     return textSurface,textSurface.get_rect()
 
-def message_display(text):
-    largeText = pygame.font.Font('freesansbold.ttf',110)
-    TextSurf, TextRect = text_objects(text,largeText)
-    TextRect.center = ((display_width/2),(display_height/6*6))
-    gameDisplay.blit(TextSurf, TextRect)
+def message_display(text, names):
+    largeText = pygame.font.Font('freesansbold.ttf',100)
+    
+    colorTotal = 0
+    for i in range(len(text)):
+        colorTotal += text[i]
+    
+    for i in range(len(text)):
+        TextSurf, TextRect = text_objects(names[i]+ ": "+str(text[i]) + "(" + str(round((text[i]/colorTotal)*10000)/100) +"%)",largeText)
+        TextRect.center = ((display_width/2),(display_height/(len(text)+1)*(i+1)))
+        gameDisplay.blit(TextSurf, TextRect)
+
+    
+ #   TextSurf, TextRect = text_objects(text,largeText)
+   # TextRect.center = ((display_width/2),(display_height/6*6))
+    #gameDisplay.blit(TextSurf, TextRect)
     pygame.display.update()
   #  time.sleep(1)
 
@@ -84,7 +95,7 @@ def menuLoop():
                 if event.type == pygame.QUIT:
                     crashed = True
                 if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_LEFT:
+                    if event.key == pygame.K_SPACE:
                     #  print("hello")
                       #  message_display("Level UP")
                      #   time.sleep(3)
@@ -149,9 +160,11 @@ def numCount(arr, dotS):
    # food = "Red:"+ str(re) + (str)(round(re/totalColor)) + "%"
     #food = "Red:"+ str(re)
     
+    food = [re, ora, yel, gre, blu, pup, zero]
+    names = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Empty"]
     
-    
-    message_display(food)
+    message_display(food, names)
+
 
 def game_loop():
     gameDisplay.fill(black)
@@ -196,7 +209,7 @@ def game_loop():
             if event.type == pygame.QUIT:
                 crashed = True
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
+                if event.key == pygame.K_LEFT or event.key == pygame.K_SPACE:
                   #  print("hello")
                     numCount(arr, dotS)
                  #   message_display("Level UP")
