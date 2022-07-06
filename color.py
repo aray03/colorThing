@@ -130,30 +130,6 @@ def numCount(arr, dotS):
             elif test == 0:
                 zero+=1
                 
-            
-  #  totalColor = re+ora+yel+gre+blu+pup
-  #  print("\n\n\n---Without Empty Space------------")
-   # print("Red:", re, (str)(round(re/totalColor, 3)*100) + "%")
-   # print("Orange:", ora, (str)(round(ora/totalColor, 3)*100) + "%")
-   # print("Yellow:", yel, (str)(round(yel/totalColor, 3)*100) + "%")
-  #  print("Green:", gre, (str)(round(gre/totalColor, 3)*100) + "%")
-  #  print("Blue:", blu, (str)(round(blu/totalColor, 3)*100) + "%")
-   # print("Purple:", pup, (str)(round(pup/totalColor, 3)*100) + "%")
-    
-    
-  #  totalColor = re+ora+yel+gre+blu+pup+zero
-   # print("\n\n\n---With Empty Space------------")
-   # print("Red:", re, (str)(round(re/totalColor, 3)*100) + "%")
-   # print("Orange:", ora, (str)(round(ora/totalColor, 3)*100) + "%")
-   # print("Yellow:", yel, (str)(round(yel/totalColor, 3)*100) + "%")
-   # print("Green:", gre, (str)(round(gre/totalColor, 3)*100) + "%")
-  #  print("Blue:", blu, (str)(round(blu/totalColor, 3)*100) + "%")
-   # print("Purple:", pup, (str)(round(pup/totalColor, 3)*100) + "%")
-    #print("Empty:", zero, (str)(round(zero/totalColor, 3)*100) + "%")    
-
-   # food = ""
-   # food = "Red:"+ str(re) + (str)(round(re/totalColor)) + "%"
-    #food = "Red:"+ str(re)
     
     food = [re, ora, yel, gre, blu, pup, zero]
     names = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Empty"]
