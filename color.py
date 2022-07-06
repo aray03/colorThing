@@ -70,9 +70,9 @@ def text_objects(text,font):
     return textSurface,textSurface.get_rect()
 
 def message_display(text):
-    largeText = pygame.font.Font('freesansbold.ttf',115)
+    largeText = pygame.font.Font('freesansbold.ttf',110)
     TextSurf, TextRect = text_objects(text,largeText)
-    TextRect.center = ((display_width/2),(display_height/2))
+    TextRect.center = ((display_width/2),(display_height/6*6))
     gameDisplay.blit(TextSurf, TextRect)
     pygame.display.update()
   #  time.sleep(1)
@@ -145,6 +145,14 @@ def numCount(arr, dotS):
     print("Purple:", pup, (str)(round(pup/totalColor, 3)*100) + "%")
     print("Empty:", zero, (str)(round(zero/totalColor, 3)*100) + "%")    
 
+   # food = ""
+   # food = "Red:"+ str(re) + (str)(round(re/totalColor)) + "%"
+    #food = "Red:"+ str(re)
+    
+    
+    
+    message_display(food)
+
 def game_loop():
     gameDisplay.fill(black)
   #  print("Hello")
@@ -191,7 +199,7 @@ def game_loop():
                 if event.key == pygame.K_LEFT:
                   #  print("hello")
                     numCount(arr, dotS)
-                    message_display("Level UP")
+                 #   message_display("Level UP")
                  #   time.sleep(3)
                     menuLoop()
                     pasteCanvas(arr, dotS)
