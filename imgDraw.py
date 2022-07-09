@@ -3,6 +3,8 @@ import pygame
 import time
 import random
 import math
+import cv2
+
 
 from tqdm import tqdm
 
@@ -42,6 +44,16 @@ def main():
     screen = pygame.display.set_mode((width, height ))
     pygame.display.set_caption('Display an image')
     penguinImage = pygame.image.load("goomba.png").convert()
+
+
+    #more attempts
+    image = cv2.imread("goomba.png")
+    
+    image[1, 1, 2]
+    
+    #BGR
+    print("HELLO THERE")
+    print(image[1,1,0])
 
   #  penguinImage.get_height
 
