@@ -14,6 +14,12 @@ display_width = 1800
 display_height = 900
 
 
+
+
+
+
+
+
 white = (255,255,255)
 black = (0,0,0)
 
